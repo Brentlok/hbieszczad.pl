@@ -3,6 +3,12 @@ import '../styles/global.css';
 import Footer from "~/components/Footer.astro";
 import Head from "~/components/Head.astro";
 import Nav from "~/components/Nav.astro";
+
+type Props = {
+    withoutHome?: boolean;
+};
+
+const { withoutHome } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -11,6 +17,13 @@ import Nav from "~/components/Nav.astro";
 		<Head />
 	</head>
 	<body>
+        {!withoutHome && (
+            <div class="fixed top-5 left-5 w-16 cursor-pointer">
+                <a href="/">
+                    <img class="pointer-events-none" src="/assets/logo.svg" alt="">
+                </a>
+            </div>
+        )}
         <Nav />
 		<slot />
         <Footer />
