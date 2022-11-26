@@ -29,7 +29,7 @@ const contacts: Array<Contact> = [
                     contacts.map(x => (
                         <div class="flex items-center gap-4">
                             <img src={`/icons/${x.icon}.svg`} alt="" class="pointer-events-none" />
-                            <a class="text-2xl" href={x.url}>{x.name ?? 'Hubert Bieszczad'}</a>
+                            <a class="text-base md:text-2xl" href={x.url}>{x.name ?? 'Hubert Bieszczad'}</a>
                         </div>
                     ))
                 }
