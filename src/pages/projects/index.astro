@@ -7,14 +7,19 @@ const projects = await Astro.glob<ProjectType>('./md/*.md');
 ---
 
 <Layout>
-    <main class="main">
-        {
-            projects.map(({frontmatter, ...p}) => (
-                <Project
-                    {...frontmatter}
-                    description={p.rawContent()} 
-                />
-            ))
-        }
-    </main>
+    <div>
+        <div class="fixed w-full h-60 -top-20 bg-white z-20 blur-sm" />
+        <div class="h-52"/>
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative gap-6 px-2">
+            {
+                projects.map(({frontmatter, ...p}) => (
+                    <Project
+                        {...frontmatter}
+                        description={p.rawContent()} 
+                    />
+                ))
+            }
+        </main>
+        <div class="h-52"/>  
+    </div>
 </Layout>

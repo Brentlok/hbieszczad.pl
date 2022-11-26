@@ -1,3 +1,7 @@
+body {
+    font-family: Poppins;
+}
+
 .gradient {
     background: linear-gradient(180.27deg, #ff385c 0.24%, #5200ff 204.57%);
 }
@@ -22,6 +26,37 @@
     height: 100vh;
     display: grid;
     place-items: center;
+}
+
+.project {
+    @apply w-80 h-80 bg-white relative rounded-2xl;
+}
+
+.project::after {
+    @apply absolute gradient -z-30 rounded-2xl;
+    content: '';
+    width: 324px;
+    height: 324px;
+    top: -2px;
+    left: -2px;
+}
+
+.project:hover .project-details {
+    @apply opacity-100;
+}
+
+.project-details {
+    @apply absolute top-0 left-0 w-80 h-80 rounded-2xl text-white opacity-0 transition-opacity z-20;   
+}
+
+.project-details::after {
+    content: '';
+    @apply gradient w-80 h-80 top-0 left-0 rounded-2xl absolute opacity-90 -z-10;
+}
+
+.icon {
+    max-width: 56px;
+    height: auto;
 }
 
 @keyframes move_wave {
