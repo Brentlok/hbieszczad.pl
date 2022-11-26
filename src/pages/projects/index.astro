@@ -1,27 +1,19 @@
 ---
+import type { Props as ProjectType } from "~/components/Project.astro";
+import Project from "~/components/Project.astro";
 import Layout from "~/layouts/Layout.astro"
 
-type Project = {
-    title: string;
-    year: number;
-    url?: string;
-    github?: string;
-    image: string;
-}
-
-const projects = await Astro.glob<Project>('./md/*.md');
+const projects = await Astro.glob<ProjectType>('./md/*.md');
 ---
 
 <Layout>
     <main class="main">
         {
-            projects.map(item => (
-                <div class="flex flex-col gap-2 items-center">
-                    <h1 class="font-gradient text-3xl">{item.frontmatter.title}</h1>
-                    <div class="w-20 h-1 gradient" />
-                    <h2 class="font-gradient text-md">{item.frontmatter.year}</h2>
-                    <span>{item.rawContent}</span>
-                </div>
+            projects.map(({frontmatter, ...p}) => (
+                <Project
+                    {...frontmatter}
+                    description={p.rawContent()} 
+                />
             ))
         }
     </main>

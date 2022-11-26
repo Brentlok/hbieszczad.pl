@@ -1,0 +1,19 @@
+---
+export type Props = {
+    title: string;
+    year: number;
+    url?: string;
+    github?: string;
+    image: string;
+    description: string;
+};
+
+const { title, year, url, github, image, description } = Astro.props;
+---
+
+<div class="flex flex-col gap-2 items-center">
+    <h1 class="font-gradient text-3xl">{title}</h1>
+    <div class="w-20 h-1 gradient" />
+    <h2 class="font-gradient text-md">{year}</h2>
+    <span>{description}</span>
+</div>
