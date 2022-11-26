@@ -1,8 +1,39 @@
 ---
 import Layout from "~/layouts/Layout.astro"
 
+type Contact = {
+    icon: string;
+    url: string;
+    name?: string;
+}
+
+const contacts: Array<Contact> = [
+    {
+        icon: 'linkedin',
+        url: 'https://www.linkedin.com/in/hubert-bieszczad-a2a24823a',
+    },
+    {
+        icon: 'mail',
+        url: 'mailto:0hubert.bieszczad@gmail.com',
+        name: '0hubert.bieszczad@gmail.com',
+    },
+];
 ---
 
 <Layout>
-    <h1>Contact</h1>
+    <main class="main">
+        <div>
+            <h1 class="font-gradient text-4xl font-bold text-center">Contact</h1>
+            <div class="mt-8 flex flex-col gap-6">
+                {
+                    contacts.map(x => (
+                        <div class="flex items-center gap-4">
+                            <img src={`/icons/${x.icon}.svg`} alt="" class="pointer-events-none" />
+                            <a class="text-2xl" href={x.url}>{x.name ?? 'Hubert Bieszczad'}</a>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </main>
 </Layout>

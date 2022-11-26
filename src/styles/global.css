@@ -59,6 +59,14 @@ body {
     height: auto;
 }
 
+.link[data-is-active="true"] {
+    @apply opacity-100;
+}
+
+.link {
+    @apply font-gradient text-2xl opacity-70 hover:opacity-100 cursor-pointer transition-opacity font-bold;
+}
+
 @keyframes move_wave {
     0% {
         transform: translateX(0);
