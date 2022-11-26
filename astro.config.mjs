@@ -5,7 +5,7 @@ import node from "@astrojs/node";
 
 export default defineConfig({
   output: 'server',
-  site: 'https://example.com',
+  site: 'https://hbieszczad.pl',
   integrations: [sitemap(), tailwind()],
   adapter: node({
     mode: 'standalone',

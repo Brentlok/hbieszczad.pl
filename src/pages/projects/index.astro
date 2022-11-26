@@ -1,9 +1,16 @@
 ---
+import type { MarkdownInstance } from "astro";
 import type { Props as ProjectType } from "~/components/Project.astro";
 import Project from "~/components/Project.astro";
 import Layout from "~/layouts/Layout.astro"
 
 const projects = await Astro.glob<ProjectType>('./md/*.md');
+
+const sortByDate = (a: MarkdownInstance<ProjectType>, b: MarkdownInstance<ProjectType>) => {
+    const date1 = new Date(b.frontmatter['created-at']);
+    const date2 = new Date(a.frontmatter['created-at']);
+    return date1.getTime() - date2.getTime();
+}
 ---
 
 <Layout>
@@ -12,7 +19,8 @@ const projects = await Astro.glob<ProjectType>('./md/*.md');
         <div class="h-52"/>
         <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative gap-6 px-2">
             {
-                projects.map(({frontmatter, ...p}) => (
+                projects.sort(sortByDate)
+                    .map(({frontmatter, ...p}) => (
                     <Project
                         {...frontmatter}
                         description={p.rawContent()} 
