@@ -27,10 +27,12 @@ const contacts: Array<Contact> = [
             <div class="mt-8 flex flex-col gap-6">
                 {
                     contacts.map(x => (
-                        <div class="flex items-center gap-4">
-                            <img src={`/icons/${x.icon}.svg`} alt="" class="pointer-events-none" />
-                            <a class="text-base md:text-2xl" href={x.url}>{x.name ?? 'Hubert Bieszczad'}</a>
-                        </div>
+                        <a href={x.url}>
+                            <div class="flex items-center gap-4">
+                                <img src={`/icons/${x.icon}.svg`} alt="" class="pointer-events-none" />
+                                <span class="text-base md:text-2xl">{x.name ?? 'Hubert Bieszczad'}</span>
+                            </div>
+                        </a>
                     ))
                 }
             </div>
