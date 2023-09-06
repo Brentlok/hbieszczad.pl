@@ -1,9 +1,10 @@
 ---
-import "@fontsource/poppins";
-import '../styles/global.css';
-import Footer from "~/components/Footer.astro";
-import Head from "~/components/Head.astro";
-import Nav from "~/components/Nav.astro";
+import "@fontsource/poppins"
+import '../styles/global.css'
+import Footer from "~/components/Footer.astro"
+import Head from "~/components/Head.astro"
+import Nav from "~/components/Nav.astro"
+import { ViewTransitions } from 'astro:transitions'
 
 type Props = {
     withoutHome?: boolean;
@@ -21,12 +22,13 @@ const { withoutHome } = Astro.props;
         {!withoutHome && (
             <div class="fixed top-5 left-5 w-16 cursor-pointer z-30">
                 <a href="/">
-                    <img class="pointer-events-none" src="/assets/logo.svg" alt="">
+                    <img transition:name="logo" class="pointer-events-none" src="/assets/logo.svg" alt="">
                 </a>
             </div>
         )}
         <Nav />
 		<slot />
         <Footer />
+        <ViewTransitions />
 	</body>
 </html>
