@@ -17,11 +17,9 @@ const path = Astro.url.pathname.slice(1) as Item;
 ---
 
 <nav class="fixed top-5 right-5 flex flex-col gap-4 items-end z-30">
-    {
-        items.map((item) => (
-            <div class="link" data-is-active={String(item.toLowerCase() === path)}>
-                <a href={getLink(item)} target={getTarget(item)}>{item}</a>    
-            </div>
-        ))
-    }
+    {items.filter(item => item.toLowerCase() !== path).map((item) => (
+        <div class="link" transition:name={item}>
+            <a href={getLink(item)} target={getTarget(item)}>{item}</a>    
+        </div>
+    ))}
 </nav>
