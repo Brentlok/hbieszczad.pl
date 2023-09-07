@@ -1,11 +1,12 @@
 ---
+import { T } from '~/locale';
 export type Props = {
     title: string;
     year: number;
     url?: string;
     github?: string;
     image: string;
-    description: string;
+    description: keyof typeof T.projects.items;
     technologies: string;
     "created-at": string;
 };
@@ -14,37 +15,36 @@ const { title, year, url, github, image, description, technologies } = Astro.pro
 ---
 
 <div class="flex flex-col gap-2 items-center z-10">
-    <h1 class="font-gradient text-3xl font-bold">{title}</h1>
+    <h1 class="font-gradient text-3xl font-bold">
+        {title}
+    </h1>
     <div class="w-20 h-1 gradient" />
-    <h2 class="font-gradient text-md font-bold">{year}</h2>
+    <h2 class="font-gradient text-md font-bold">
+        {year}
+    </h2>
     <div class="project">
         <img src={`/projects/${image}.webp`} alt=' ' class="rounded-2xl">
         <div class="project-details px-6">
             <div class="relative grid place-items-center h-80 font-medium text-base tracking-wider">
                 <div>
-                    <span class="text-center">{description}</span>
+                    <span class="text-center">
+                        {T.projects.items[description]}
+                    </span>
                     <div class="mt-5 flex w-full justify-center gap-4 pointer-events-none">
-                        {
-                            technologies.split(',')
-                                .map(t => <img src={`/icons/${t}.svg`} alt={t} class="icon" />)
-                        }
+                        {technologies.split(',').map(t => <img src={`/icons/${t}.svg`} alt={t} class="icon" />)}
                     </div>
                 </div>
                 <div class="absolute bottom-4 flex flex-center gap-4">
-                    {
-                        github && (
-                            <a href={github} target="_blank">
-                                <img src="/icons/github.svg" alt="" />
-                            </a>
-                        )
-                    }
-                    {
-                        url && (
-                            <a href={url} target="_blank">
-                                <img src="/icons/link.svg" alt="" />
-                            </a>
-                        )
-                    }
+                    {github && (
+                        <a href={github} target="_blank">
+                            <img src="/icons/github.svg" alt="" />
+                        </a>
+                    )}
+                    {url && (
+                        <a href={url} target="_blank">
+                            <img src="/icons/link.svg" alt="" />
+                        </a>
+                    )}
                 </div>
             </div>
         </div>

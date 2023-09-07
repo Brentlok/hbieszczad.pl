@@ -3,8 +3,9 @@ import type { MarkdownInstance } from "astro";
 import type { Props as ProjectType } from "~/components/Project.astro";
 import Project from "~/components/Project.astro";
 import Layout from "~/layouts/Layout.astro"
+import { T } from "~/locale";
 
-const projects = await Astro.glob<ProjectType>('./md/*.md');
+const projects = await Astro.glob<ProjectType>('../md/*.md');
 
 const sortByDate = (a: MarkdownInstance<ProjectType>, b: MarkdownInstance<ProjectType>) => {
     const date1 = new Date(b.frontmatter['created-at']);
@@ -19,19 +20,16 @@ const sortByDate = (a: MarkdownInstance<ProjectType>, b: MarkdownInstance<Projec
         <div class="h-52"/>
         <h1 
             class="font-gradient text-4xl font-bold text-center pb-8"
-            transition:name="Projects"
+            transition:name="projects"
         >
-            Projects
+            {T.projects.title}
         </h1>
         <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative gap-6 px-2">
             {projects.sort(sortByDate)
-                .map(({frontmatter, ...p}) => (
-                <Project
-                    {...frontmatter}
-                    description={p.rawContent()} 
-                />
+                .map(({ frontmatter }) => (
+                <Project {...frontmatter} />
             ))}
         </main>
-        <div class="h-52"/>  
+        <div class="h-52"/>
     </div>
 </Layout>

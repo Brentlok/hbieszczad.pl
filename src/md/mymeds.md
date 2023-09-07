@@ -6,6 +6,5 @@ github: https://github.com/Brentlok/MyMeds
 image: mymeds
 technologies: react,js
 created-at: 2022-1
+description: mymeds
 ---
-
-App created with react native for my project in Zwolnieni z teorii 

@@ -22,7 +22,7 @@ const { withoutHome } = Astro.props;
         {!withoutHome && (
             <div class="fixed top-5 left-5 w-16 cursor-pointer z-30">
                 <a href="/">
-                    <img transition:name="logo" class="pointer-events-none" src="/assets/logo.svg" alt="">
+                    <img transition:name="logo" class="pointer-events-none" src="/assets/logo.svg" alt=""/>
                 </a>
             </div>
         )}
@@ -32,3 +32,16 @@ const { withoutHome } = Astro.props;
         <ViewTransitions />
 	</body>
 </html>
+
+<script>
+    import { watchLanguageChange } from 'astro-static-dict/client'
+    import { enUs, plPl } from '~/locale/dictionaries'
+
+    watchLanguageChange({
+        cachedDictionaries: {
+            enUs,
+            plPl
+        },
+        defaultLanguage: 'enUs'
+    })
+</script>
