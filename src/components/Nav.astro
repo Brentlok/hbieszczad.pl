@@ -23,7 +23,7 @@ const path = Astro.url.pathname.slice(1) as Item;
         <span id="selectedLanguage" class="font-gradient text-2xl">
             {T.language}
         </span>
-        <img src="/icons/language.svg" class="w-10 ml-4"/>
+        <img src="/icons/language.svg" class="w-10 ml-4" alt="language" />
     </div>
     {items.filter(item => item.toLowerCase() !== path.replace('/', '')).map((item) => (
         <div class="link" transition:name={item}>
