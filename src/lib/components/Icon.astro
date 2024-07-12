@@ -1,0 +1,19 @@
+---
+export type Props = {
+    image: string
+    class?: string
+}
+
+---
+
+<div class={`icon ${Astro.props.class}`} style={`mask-image: url('./${Astro.props.image}.svg');`} />
+
+<style>
+    .icon {
+        background: linear-gradient(120deg, #FF385C, #8800ff, ease-in-out, #FF385C);
+        background-size: 100% 170%;
+        aspect-ratio: 1;
+        animation: GradientAnimation 10s ease infinite;
+        mask-size: contain;
+    }
+</style>

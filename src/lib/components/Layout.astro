@@ -1,0 +1,62 @@
+---
+import { SEO } from 'astro-seo'
+import '@fontsource/poppins'
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width" />
+        <SEO
+            charset="UTF-8"
+            title="Hubert Bieszczad | Frontend Developer"
+            description="Hi, I\'m Hubert and I love web technology"
+            extend={{
+                link: [
+                    { rel: 'icon', href: './logo.svg' }
+                ],
+                meta: [
+                    { name: 'viewport', content: 'width=device-width, viewport-fit=cover, height=device-height, initial-scale=1' },
+                    { name: 'generator', content: Astro.generator },
+                    { name: 'keywords', content: 'frontend, web, typescript, react' },
+                    { name: 'msapplication-TileColor', content: '#ffffff' },
+                    { name: 'theme-color', content: '#ffffff' }
+                ]
+            }}
+        />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+    .font-gradient {
+        background: linear-gradient(120deg, #FF385C, #8800ff, ease-in-out, #FF385C);
+        background-size: 100% 170%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: GradientAnimation 10s ease infinite;
+    }
+
+    @keyframes GradientAnimation {
+        0% {
+            background-position: 50% 0%;
+        }
+        50% {
+            background-position: 51% 100%;
+        }
+        100% {
+            background-position: 50% 0%;
+        }
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(190deg, #FF385C55, ease-in-out, #3b00ba55);
+    }
+</style>
