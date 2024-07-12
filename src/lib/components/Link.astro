@@ -6,7 +6,7 @@ export type Props = LinkType
 
 ---
 
-<a target="_blank" href={Astro.props.url} class="flex items-center gap-4 tracking-wider font-medium text-xl">
+<a aria-label={Astro.props.icon} target="_blank" href={Astro.props.url} class="flex items-center gap-4 tracking-wider font-medium text-xl">
     <Icon image={Astro.props.icon} class="w-10 xs:w-16" />
     <p class="font-gradient hidden md:block">
         {Astro.props.text}
